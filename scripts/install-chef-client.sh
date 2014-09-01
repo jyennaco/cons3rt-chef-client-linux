@@ -26,8 +26,11 @@ function install-chef-client() {
     ${logInfo} "Installing Chef Client ..."
     curl -L https://www.opscode.com/chef/install.sh | bash
 
-    RESULT=`knife --version`
-    ${logInfo} "Checking Chef version: ${RESULT}"
+    RESULT=`chef-client --version`
+    ${logInfo} "Checking chef-client version: ${RESULT}"
+
+    ${logInfo} "Creating directory: /etc/chef ..."
+    mkdir -p /etc/chef
 
     ${logInfo} "Completed Chef Client install!"
 }
